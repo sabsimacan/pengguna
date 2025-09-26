@@ -297,12 +297,14 @@
                 <i class="fas fa-tint"></i>
             </div>
             <h1>Halaman Sistem Informasi SAB SIMACAN</h1>
-            <p style="color: white; font-size: 1.1rem; margin-top: 1rem; opacity: 0.9; font-weight: 300;">Aplikasi Informasi Layanan Air Bersih Dukuh Simacan Desa Kecepit</p>
+            <p style="color: white; font-size: 1.1rem; margin-top: 1rem; opacity: 0.9; font-weight: 300;">
+                Aplikasi Informasi Layanan Air Bersih Dukuh Simacan Desa Kecepit
+            </p>
         </header>
 
         <!-- Menu Grid -->
         <main class="menu-grid">
-            <a href="https://script.google.com/macros/s/AKfycbzrkcdhMfqz0NPuXMVQdyWsWxVhTDJmgbcbwu3_rW7xknU8zHJxro4dqKbSkpcCa0VZAw/exec?page=pengguna" class="menu-card fade-in-up" onclick="navigateToPage('pengguna')">
+            <a href="https://script.google.com/macros/s/AKfycbzrkcdhMfqz0NPuXMVQdyWsWxVhTDJmgbcbwu3_rW7xknU8zHJxro4dqKbSkpcCa0VZAw/exec?page=pengguna" class="menu-card fade-in-up">
                 <div class="menu-icon">
                     <i class="fas fa-users"></i>
                 </div>
@@ -310,7 +312,7 @@
                 <p class="menu-description">Informasi pengguna SAB Simacan</p>
             </a>
 
-            <a href="https://script.google.com/macros/s/AKfycbzrkcdhMfqz0NPuXMVQdyWsWxVhTDJmgbcbwu3_rW7xknU8zHJxro4dqKbSkpcCa0VZAw/exec?page=Rekap" class="menu-card bounce fade-in-up" onclick="navigateToPage('rekap')">
+            <a href="https://script.google.com/macros/s/AKfycbzrkcdhMfqz0NPuXMVQdyWsWxVhTDJmgbcbwu3_rW7xknU8zHJxro4dqKbSkpcCa0VZAw/exec?page=rekap" class="menu-card bounce fade-in-up">
                 <div class="menu-icon">
                     <i class="fas fa-chart-bar"></i>
                 </div>
@@ -318,7 +320,7 @@
                 <p class="menu-description">Lihat laporan dan rekapitulasi data secara komprehensif</p>
             </a>
 
-            <a href="https://script.google.com/macros/s/AKfycbzrkcdhMfqz0NPuXMVQdyWsWxVhTDJmgbcbwu3_rW7xknU8zHJxro4dqKbSkpcCa0VZAw/exec?page=kas" class="menu-card pulse fade-in-up" onclick="navigateToPage('kas')">
+            <a href="https://script.google.com/macros/s/AKfycbzrkcdhMfqz0NPuXMVQdyWsWxVhTDJmgbcbwu3_rW7xknU8zHJxro4dqKbSkpcCa0VZAw/exec?page=kas" class="menu-card pulse fade-in-up">
                 <div class="menu-icon">
                     <i class="fas fa-wallet"></i>
                 </div>
@@ -329,33 +331,14 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p>&copy; 2025 Sistem Administrasi SAB</p>
+            <p>&copy; Sistem Informasi SAB Simacan</p>
         </footer>
     </div>
 
     <script>
-        // Navigation function
-        function navigateToPage(page) {
-            // Prevent default navigation
-            event.preventDefault();
-            
-            // Add click animation
-            const card = event.currentTarget;
-            card.style.transform = 'scale(0.95)';
-            
-            setTimeout(() => {
-                card.style.transform = '';
-                // Here you would typically navigate to the actual page
-                // For demo purposes, we'll show an alert
-                alert(`Navigating to ${page.charAt(0).toUpperCase() + page.slice(1)} page...`);
-            }, 150);
-        }
-
         // Add entrance animations on page load
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.fade-in-up');
-            
-            // Trigger animations with staggered delay
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.opacity = '1';
@@ -375,5 +358,5 @@
             decorationBottom.style.transform = `translate(${-x * 15}px, ${-y * 15}px)`;
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9854372ff5d7da32',t:'MTc1ODkwNDk1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
