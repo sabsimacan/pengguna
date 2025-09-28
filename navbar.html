@@ -6,54 +6,5 @@
 </div>
 
 <style>
-  .navbar-home {
-    background:#1976d2;
-    padding:6px 15px;
-    display:flex;
-    flex-wrap:wrap;           /* ✅ bisa membungkus di layar kecil */
-    gap:14px;
-    align-items:center;
-    justify-content:center;   /* ✅ rata tengah di layar kecil */
-    box-shadow:0 2px 6px rgba(0,0,0,0.15);
-    font-family:"Segoe UI",sans-serif;
-  }
-
-  .navbar-home a {
-    color:#fff;
-    font-weight:600;
-    font-size:0.95rem;
-    text-decoration:none;
-    transition:color 0.2s;
-    display:flex;
-    align-items:center;
-    gap:6px;
-  }
-
-  .navbar-home a:hover { color:#ffeb3b; }
-
-  /* ✅ Responsif di layar kecil */
-  @media (max-width: 600px) {
-    .navbar-home {
-      padding:8px;
-      gap:10px;
-    }
-    .navbar-home a {
-      font-size:0.85rem;
-      flex:1 1 45%;          /* ✅ tombol jadi 2 kolom */
-      justify-content:center;
-      padding:6px 0;
-      background:rgba(255,255,255,0.1);
-      border-radius:6px;
-    }
-    .navbar-home a i {
-      font-size:1rem;
-    }
-  }
-
-  /* ✅ Ekstra kecil (<400px) - 1 kolom */
-  @media (max-width: 400px) {
-    .navbar-home a {
-      flex:1 1 100%;
-    }
-  }
+  .navbar-home { background:#1976d2; padding:6px 15px; display:flex; gap:18px; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.15); } .navbar-home a { color:#fff; font-weight:600; font-size:0.9rem; text-decoration:none; transition:color 0.2s; } .navbar-home a:hover { color:#ffeb3b; }
 </style>
