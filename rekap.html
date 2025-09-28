@@ -12,35 +12,29 @@
     background:#f5f7fa;
     height:100vh;
   }
-  iframe.navbar {
-    width:100%;
-    height:46px;
-    border:none;
-    display:block;
-  }
   .header-box {
     background:#fff;
-    padding:8px 14px;              /* lebih kecil */
+    padding:8px 14px;
     border-radius:0 0 10px 10px;
     box-shadow:0 2px 6px rgba(0,0,0,0.08);
     display:flex;
     align-items:center;
     gap:8px;
-    margin:0;                     /* buang spasi atas/bawah */
+    margin:0;
   }
   .header-box i {
-    font-size:22px;               /* ikon lebih kecil */
+    font-size:22px;
     color:#1976d2;
   }
   .header-text h3 {
     margin:0;
     font-weight:700;
-    font-size:1.1rem;             /* judul lebih kecil */
+    font-size:1.1rem;
     line-height:1.2;
   }
   .header-text p {
     margin:0;
-    font-size:0.85rem;            /* subjudul lebih kecil */
+    font-size:0.85rem;
     line-height:1.2;
     color:#444;
   }
@@ -49,15 +43,15 @@
   .header-text .word-3 { color:#1e88e5; }
   .frame {
     width:100%;
-    height:calc(100vh - 120px);   /* disesuaikan karena header lebih ramping */
+    height:calc(100vh - 120px);
     border:none;
     display:block;
   }
 </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <iframe class="navbar" src="navbar.html" scrolling="no"></iframe>
+  <!-- Navbar auto-load -->
+  <div id="navbar"></div>
 
   <!-- Header -->
   <div class="header-box">
@@ -73,7 +67,17 @@
     Gagal memuat halaman rekap, silakan refresh.
   </iframe>
 
+  <!-- Loader script -->
   <script>
+    // load navbar
+    fetch("navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      })
+      .catch(err => console.error("Gagal load navbar:", err));
+
+    // load konten Apps Script
     window.addEventListener("DOMContentLoaded", function() {
       document.getElementById("rekapFrame").src =
         "https://script.google.com/macros/s/AKfycbzcufPdAUJ1mp3giZJcDuF2FOsn_vygpgdZagxlRTOS8HUhSbyEnO4rEnS5UsnVLd6YvQ/exec?page=rekap";
