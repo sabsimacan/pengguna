@@ -7,23 +7,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;height:100vh;background:#f5f7fa}
-  .navbar-home { background:#1976d2; padding:6px 15px; display:flex; gap:18px; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.15); }
-  .navbar-home a { color:#fff; font-weight:600; font-size:0.9rem; text-decoration:none; transition:color 0.2s; }
-  .navbar-home a:hover { color:#ffeb3b; }
-  .header-box { background:#fff; padding:12px 18px; border-radius:0 0 14px 14px; box-shadow:0 3px 8px rgba(0,0,0,0.08); margin-bottom:10px; display:flex; align-items:center; gap:10px; }
-  .header-box i { font-size:28px; color:#1976d2; }
-  .header-text h3 { margin:0; font-weight:800; font-size:1.3rem; white-space:nowrap; }
-  .header-text .word-1 { color:#e53935; } .header-text .word-2 { color:#fb8c00; } .header-text .word-3 { color:#1e88e5; }
+  .header-box{background:#fff;padding:12px 18px;border-radius:0 0 14px 14px;box-shadow:0 3px 8px rgba(0,0,0,0.08);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+  .header-box i{font-size:28px;color:#1976d2}
+  .header-text h3{margin:0;font-weight:800;font-size:1.3rem;white-space:nowrap}
+  .header-text .word-1{color:#e53935}.header-text .word-2{color:#fb8c00}.header-text .word-3{color:#1e88e5}
   .frame{width:100%;height:calc(100vh - 120px);border:none;display:block}
 </style>
 </head>
 <body>
   <!-- Navbar -->
-  <div class="navbar-home">
-    <a href="index.html">🏠 Home</a>
-    <a href="keuangan.html">💰 Keuangan</a>
-    <a href="rekap.html">📊 Rekap</a>
-  </div>
+  <div id="navbar-container"></div>
 
   <!-- Header -->
   <div class="header-box">
@@ -34,9 +27,18 @@
     </div>
   </div>
 
-  <!-- Isi iframe -->
+  <!-- Konten dari Apps Script -->
   <iframe class="frame"
     src="https://script.google.com/macros/s/AKfycbzcufPdAUJ1mp3giZJcDuF2FOsn_vygpgdZagxlRTOS8HUhSbyEnO4rEnS5UsnVLd6YvQ/exec?page=keuangan"
-    scrolling="no" title="Keuangan" loading="lazy">Gagal memuat halaman keuangan, silakan refresh.</iframe>
+    scrolling="no" title="Keuangan" loading="lazy">
+    Gagal memuat halaman keuangan, silakan refresh.
+  </iframe>
+
+  <script>
+    // load navbar.html
+    fetch("navbar.html")
+      .then(r => r.text())
+      .then(html => document.getElementById("navbar-container").innerHTML = html);
+  </script>
 </body>
 </html>
