@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>SAB Simacan - Rekap</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-  body {
-    margin:0;
-    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-    background:#f5f7fa;
-    height:100vh;
-  }
-  .header-box {
-    background:#fff;
-    padding:8px 14px;
-    border-radius:0 0 10px 10px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.08);
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin:0;
-  }
-  .header-box svg {
-    width:22px;
-    height:22px;
-    fill:#1976d2;
-    flex-shrink:0;
-  }
-  .header-text h3 {
-    margin:0;
-    font-weight:700;
-    font-size:1.1rem;
-    line-height:1.2;
-  }
-  .header-text p {
-    margin:0;
-    font-size:0.85rem;
-    line-height:1.2;
-    color:#444;
-  }
-  .header-text .word-1 { color:#e53935; }
-  .header-text .word-2 { color:#fb8c00; }
-  .header-text .word-3 { color:#1e88e5; }
-  .frame {
-    width:100%;
-    height:calc(100vh - 120px);
-    border:none;
-    display:block;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>SAB Simacan - Rekap</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f5f7fa;
+      height: 100vh;
+    }
+    .header-box {
+      background: #fff;
+      padding: 8px 14px;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-box svg {
+      width: 22px;
+      height: 22px;
+      color: #1976d2;
+      flex-shrink: 0;
+    }
+    .header-text h3 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+    .header-text p {
+      margin: 0;
+      font-size: 0.85rem;
+      line-height: 1.2;
+      color: #444;
+    }
+    .header-text .word-1 { color: #e53935; }
+    .header-text .word-2 { color: #fb8c00; }
+    .header-text .word-3 { color: #1e88e5; }
+    .frame {
+      width: 100%;
+      height: calc(100vh - 120px);
+      border: none;
+      display: none; /* sembunyikan dulu sampai load */
+    }
+    .loader {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar auto-load -->
@@ -56,18 +61,12 @@
 
   <!-- Header -->
   <div class="header-box">
-    <!-- Ikon File Invoice (inline SVG) -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-      <path d="M224 136V0H24C10.7 0 0 10.7 0 
-      24v464c0 13.3 10.7 24 24 24h336c13.3 0 
-      24-10.7 24-24V160H248c-13.3 0-24-10.7-24-24zm64 
-      236c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 
-      5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-64c0 6.6-5.4 
-      12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 
-      12-12h168c6.6 0 12 5.4 12 12v8zm0-72v8c0 6.6-5.4 
-      12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 
-      12-12h168c6.6 0 12 5.4 12 12zM377 
-      105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"/>
+    <!-- ganti FontAwesome dengan inline SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512">
+      <path d="M64 64C28.7 64 0 92.7 0 128V384c0 35.3 28.7 64 64 
+               64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H352
+               c0-53-43-96-96-96s-96 43-96 96H64zM288 160H224c0-17.7
+               14.3-32 32-32s32 14.3 32 32z"/>
     </svg>
     <div class="header-text">
       <h3><span class="word-1">Rekap</span> <span class="word-2">SAB</span> <span class="word-3">Simacan</span></h3>
@@ -75,12 +74,13 @@
     </div>
   </div>
 
-  <!-- Konten dari Apps Script -->
-  <iframe id="rekapFrame" class="frame" scrolling="yes" title="Rekap" loading="lazy">
-    Gagal memuat halaman rekap, silakan refresh.
-  </iframe>
+  <!-- Loader -->
+  <div id="loader" class="loader">Sedang memuat data...</div>
 
-  <!-- Loader script -->
+  <!-- Konten dari Apps Script -->
+  <iframe id="rekapFrame" class="frame" scrolling="yes" title="Rekap" loading="lazy"></iframe>
+
+  <!-- Script -->
   <script>
     // load navbar
     fetch("navbar.html")
@@ -91,9 +91,17 @@
       .catch(err => console.error("Gagal load navbar:", err));
 
     // load konten Apps Script
+    const iframe = document.getElementById("rekapFrame");
+    const loader = document.getElementById("loader");
+
     window.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("rekapFrame").src =
-        "https://script.google.com/macros/s/AKfycbzcufPdAUJ1mp3giZJcDuF2FOsn_vygpgdZagxlRTOS8HUhSbyEnO4rEnS5UsnVLd6YvQ/exec?page=rekap";
+      iframe.src = "https://script.google.com/macros/s/AKfycbzcufPdAUJ1mp3giZJcDuF2FOsn_vygpgdZagxlRTOS8HUhSbyEnO4rEnS5UsnVLd6YvQ/exec?page=rekap";
+    });
+
+    // tampilkan iframe setelah load selesai
+    iframe.addEventListener("load", function() {
+      loader.style.display = "none";
+      iframe.style.display = "block";
     });
   </script>
 </body>
