@@ -1,66 +1,79 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>SAB Simacan - Data Keuangan</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Optimasi koneksi -->
-  <link rel="preconnect" href="https://script.google.com">
-  <link rel="dns-prefetch" href="https://script.google.com">
-  <link rel="dns-prefetch" href="https://www.gstatic.com">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: #f5f7fa;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .header-box {
-      background: #fff;
-      padding: 8px 14px; 
-      border-radius: 0 0 10px 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0;
-      flex-shrink: 0;
-    }
-    .header-box i {
-      font-size: 22px;
-      color: #1976d2;
-    }
-    .header-text h3 {
-      margin: 0;
-      font-weight: 700;
-      font-size: 1.1rem;
-      line-height: 1.2;
-    }
-    .header-text p {
-      margin: 0;
-      font-size: 0.85rem;
-      line-height: 1.2;
-      color: #444;
-    }
-    .header-text .word-1 { color: #e53935; }
-    .header-text .word-2 { color: #fb8c00; }
-    .header-text .word-3 { color: #1e88e5; }
-
-    iframe.frame {
-      width: 100%;
-      flex: 1;
-      border: none;
-      display: block;
-      min-height: 400px; /* supaya tidak blank saat awal */
-    }
-  </style>
+<meta charset="UTF-8">
+<title>SAB Simacan - Data Keuangan</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  body {
+    margin:0;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    background:#f5f7fa;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  .header-box {
+    background:#fff;
+    padding:8px 14px;
+    border-radius:0 0 10px 10px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0;
+  }
+  .header-box i {
+    font-size:22px;
+    color:#1976d2;
+  }
+  .header-text h3 {
+    margin:0;
+    font-weight:700;
+    font-size:1.1rem;
+    line-height:1.2;
+  }
+  .header-text p {
+    margin:0;
+    font-size:0.85rem;
+    line-height:1.2;
+    color:#444;
+  }
+  .header-text .word-1 { color:#e53935; }
+  .header-text .word-2 { color:#fb8c00; }
+  .header-text .word-3 { color:#1e88e5; }
+  .frame-container {
+    position:relative;
+    flex:1;
+  }
+  .frame {
+    width:100%;
+    height:100%;
+    border:none;
+    display:block;
+  }
+  .loader {
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(245,247,250,0.9);
+    font-size:0.9rem;
+    color:#1976d2;
+    font-weight:600;
+    gap:8px;
+  }
+  .loader i {
+    font-size:18px;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform:rotate(0deg); }
+    100% { transform:rotate(360deg); }
+  }
+</style>
 </head>
 <body>
   <!-- Navbar auto-load -->
@@ -70,40 +83,32 @@
   <div class="header-box">
     <i class="fa-solid fa-wallet"></i>
     <div class="header-text">
-      <h3>
-        <span class="word-1">Data</span> 
-        <span class="word-2">Keuangan</span> 
-        <span class="word-3">SAB Simacan</span>
-      </h3>
+      <h3><span class="word-1">Data</span> <span class="word-2">Keuangan</span> <span class="word-3">SAB Simacan</span></h3>
       <p>Informasi pemasukan, pengeluaran, dan saldo bulanan</p>
     </div>
   </div>
 
-  <!-- Isi iframe -->
-  <iframe class="frame"
-    id="keuanganFrame"
-    src="https://script.google.com/macros/s/AKfycbzcufPdAUJ1mp3giZJcDuF2FOsn_vygpgdZagxlRTOS8HUhSbyEnO4rEnS5UsnVLd6YvQ/exec?page=keuangan"
-    title="Keuangan"
-    loading="eager">
-    Gagal memuat halaman keuangan, silakan refresh.
-  </iframe>
+  <!-- Isi iframe + Loader -->
+  <div class="frame-container">
+    <div class="loader" id="loader">
+      <i class="fa-solid fa-spinner"></i> Sedang memuat...
+    </div>
+    <iframe class="frame"
+      src="https://script.google.com/macros/s/AKfycbzcufPdAUJ1mp3giZJcDuF2FOsn_vygpgdZagxlRTOS8HUhSbyEnO4rEnS5UsnVLd6YvQ/exec?page=keuangan"
+      scrolling="no" title="Keuangan" loading="lazy"
+      onload="document.getElementById('loader').style.display='none'">
+      Gagal memuat halaman keuangan, silakan refresh.
+    </iframe>
+  </div>
 
   <!-- Loader script -->
   <script>
-    // load navbar
     fetch("navbar.html")
       .then(res => res.text())
       .then(data => {
         document.getElementById("navbar").innerHTML = data;
       })
       .catch(err => console.error("Gagal load navbar:", err));
-
-    // auto-resize iframe (jika Apps Script mengirim pesan tinggi konten)
-    window.addEventListener("message", function(e){
-      if (e.data.type === "resize-iframe") {
-        document.getElementById("keuanganFrame").style.height = e.data.height + "px";
-      }
-    });
   </script>
 </body>
 </html>
