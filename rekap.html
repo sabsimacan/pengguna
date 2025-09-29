@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <title>SAB Simacan - Rekap</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-   body {
+  body {
     margin:0;
     font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
     background:#f5f7fa;
@@ -22,9 +21,11 @@
     gap:8px;
     margin:0;
   }
-  .header-box i {
-    font-size:22px;
-    color:#1976d2;
+  .header-box svg {
+    width:22px;
+    height:22px;
+    fill:#1976d2;
+    flex-shrink:0;
   }
   .header-text h3 {
     margin:0;
@@ -55,7 +56,19 @@
 
   <!-- Header -->
   <div class="header-box">
-    <i class="fa-solid fa-file-invoice"></i>
+    <!-- Ikon File Invoice (inline SVG) -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+      <path d="M224 136V0H24C10.7 0 0 10.7 0 
+      24v464c0 13.3 10.7 24 24 24h336c13.3 0 
+      24-10.7 24-24V160H248c-13.3 0-24-10.7-24-24zm64 
+      236c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 
+      5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-64c0 6.6-5.4 
+      12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 
+      12-12h168c6.6 0 12 5.4 12 12v8zm0-72v8c0 6.6-5.4 
+      12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 
+      12-12h168c6.6 0 12 5.4 12 12zM377 
+      105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"/>
+    </svg>
     <div class="header-text">
       <h3><span class="word-1">Rekap</span> <span class="word-2">SAB</span> <span class="word-3">Simacan</span></h3>
       <p>Data penggunaan & tagihan air bersih</p>
